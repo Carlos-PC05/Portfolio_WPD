@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /** Media Queries **/
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
@@ -347,6 +348,43 @@ body {
   background-color: #2B332F;
 }
 
+/* --- Estilo base (Pequeño punto verde) --- */
+.cursor-esfera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #2ecc71; /* Verde brillante */
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  /* Transición fluida para TODOS los cambios de estilo */
+  transition: width 0.5s ease-out, height 0.5s ease-out, opacity 0.5s ease, background-color 0.5s ease, border 0.5s ease, left 0.3s ease-out, top 0.3s ease-out;
+}
+
+/* --- ESTADO 1: Sobre Enlaces/Iconos (Aparece y Desaparece Fluidamente) --- */
+.cursor-esfera.on-link {
+  width: 0px; /* Se encoge */
+  height: 0px;
+  opacity: 0; /* Desaparece */
+}
+
+/* --- ESTADO 2: Sobre Bloques de Texto (Se hace Gigante y Translúcida) --- */
+.cursor-esfera.on-text {
+  width: 40rem; /* Se hace enorme */
+  height: 40rem;
+  /* Efecto translúcido y transparente */
+  background-color: #00F080; /* Verde opaco al 20% */
+  /* OPCIONAL: Un borde sutil para definir la esfera */
+  /* border: 1px solid rgba(46, 204, 113, 0.5); */
+  /* El truco avanzado de Michal (a veces invertido): */
+  mix-blend-mode: difference;
+  /* (Nota: 'mix-blend-mode' requiere mucha potencia gráfica, 
+      prueba la opacidad simple primero como te pongo arriba) */
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -365,15 +403,31 @@ body {
 }
 .nav .nav-container a:hover {
   color: #00F080;
+  cursor: none;
 }
 
 .content-container {
   min-height: 45rem;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+}
+.content-container .welcome {
+  text-align: center;
+  max-width: fit-content;
 }
 .content-container .welcome-text {
   font-family: "Libre Franklin", sans-serif;
   color: #ffffff;
+  font-size: 7rem;
+}
+.content-container .welcome-span {
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  color: #00F080;
+  font-size: 7rem;
 }
 
 .footer {
@@ -384,8 +438,19 @@ body {
   flex-direction: column;
   gap: 1.2rem;
 }
-.footer .footer-container img {
+.footer .footer-container .media-icon {
+  color: #ffffff;
+  transition: color 0.2s ease;
+}
+.footer .footer-container .media-icon:hover, .footer .footer-container .media-icon:focus-visible {
+  color: #00F080;
+  cursor: none;
+}
+.footer .footer-container .media-icon svg {
+  display: block;
+  width: auto;
   max-height: 2rem;
+  fill: currentColor;
 }
 
 /*# sourceMappingURL=index.css.map */
