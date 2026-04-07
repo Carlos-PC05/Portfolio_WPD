@@ -5,6 +5,55 @@ body{
     background-color: v.$fondo;
 }
 
+/* --- Estilo base (Pequeño punto verde) --- */
+.cursor-esfera {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background-color: #2ecc71; /* Verde brillante */
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  
+  /* Transición fluida para TODOS los cambios de estilo */
+  transition: width 0.5s ease-out, 
+              height 0.5s ease-out, 
+              opacity 0.5s ease, 
+              background-color 0.5s ease,
+              border 0.5s ease,
+              left 0.3s ease-out,
+              top 0.3s ease-out;
+}
+
+/* --- ESTADO 1: Sobre Enlaces/Iconos (Aparece y Desaparece Fluidamente) --- */
+.cursor-esfera.on-link {
+  width: 0px;      /* Se encoge */
+  height: 0px;
+  opacity: 0;       /* Desaparece */
+}
+
+/* --- ESTADO 2: Sobre Bloques de Texto (Se hace Gigante y Translúcida) --- */
+.cursor-esfera.on-text {
+  width: 40rem;          /* Se hace enorme */
+  height: 40rem;
+  
+  /* Efecto translúcido y transparente */
+  background-color: v.$verdeClaro;/* Verde opaco al 20% */
+  
+  /* OPCIONAL: Un borde sutil para definir la esfera */
+  /* border: 1px solid rgba(46, 204, 113, 0.5); */
+
+  /* El truco avanzado de Michal (a veces invertido): */
+  mix-blend-mode: difference;
+  /* (Nota: 'mix-blend-mode' requiere mucha potencia gráfica, 
+      prueba la opacidad simple primero como te pongo arriba) */
+}
+
+//transition: left 0.3s ease-out, top 0.3s ease-out; 
+
 .nav{
     display: flex;
     justify-content: space-between;
@@ -23,6 +72,7 @@ body{
 
             &:hover{
                 color: v.$verdeClaro;
+                cursor: none;
             }
         }
     }
@@ -30,13 +80,27 @@ body{
 
 .content-container{
     min-height: 45rem;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3rem;
 
     .welcome{
+    text-align: center;
+    max-width: fit-content;
 
         &-text{
             font-family: v.$fuente_headings;
             color: v.$blanco;
+            font-size: 7rem;
+        }
+
+        &-span{
+            font-family: v.$fuente_headings;
+            font-weight: bold;
+            letter-spacing: 0.5rem;
+            color: v.$verdeClaro;
+            font-size: 7rem;
         }
     }
 }
@@ -49,8 +113,22 @@ body{
         flex-direction: column;
         gap: 1.2rem;
 
-        img{
-            max-height: 2rem;
+        .media-icon{
+            color: v.$blanco;
+            transition: color .2s ease;
+
+            &:hover,
+            &:focus-visible{
+                color: v.$verdeClaro;
+                cursor: none;
+            }
+
+            svg{
+                display: block;
+                width: auto;
+                max-height: 2rem;
+                fill: currentColor;
+            }
         }
     }
 }
