@@ -12,7 +12,7 @@ body{
   left: 0;
   width: 20px;
   height: 20px;
-  background-color: #2ecc71; /* Verde brillante */
+  background-color: v.$verdeClaro; /* Verde brillante */
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -112,6 +112,7 @@ body{
         display: flex;
         flex-direction: column;
         gap: 1.2rem;
+        margin-bottom: 10rem;
 
         .media-icon{
             color: v.$blanco;
