@@ -355,7 +355,7 @@ body {
   left: 0;
   width: 20px;
   height: 20px;
-  background-color: #2ecc71; /* Verde brillante */
+  background-color: #00F080; /* Verde brillante */
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -437,6 +437,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  margin-bottom: 10rem;
 }
 .footer .footer-container .media-icon {
   color: #ffffff;
@@ -451,6 +452,38 @@ body {
   width: auto;
   max-height: 2rem;
   fill: currentColor;
+}
+
+.container-grid {
+  display: grid;
+  gap: 1;
+  grid-template-columns: repeat(2, 1fr);
+}
+.container-grid .photo-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container-grid .photo-container .about-me {
+  margin-bottom: 10rem;
+}
+.container-grid .photo-container .photo {
+  max-width: 35rem;
+  border-radius: 50%;
+}
+.container-grid .text-container .phrase-container {
+  margin-bottom: 10rem;
+}
+.container-grid .text-container .phrase-container .about-text {
+  color: #ffffff;
+  font-family: "Josefin Sans", sans-serif;
+}
+.container-grid h1 {
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 0.5rem;
+  color: #00F080;
+  padding-bottom: 5rem;
 }
 
 /*# sourceMappingURL=index.css.map */
