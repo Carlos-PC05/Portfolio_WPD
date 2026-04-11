@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Definimos qué elementos activan cada efecto:
 
     // 'a' para enlaces, 'i' para tus iconos de redes sociales (que supongo que son enlaces)
-    const links = document.querySelectorAll('a, i'); 
+    const links = document.querySelectorAll('a, i, .hamburger'); 
 
     // 'h1', 'p', 'li' para textos donde queremos el efecto de "Lupa"
     const textBlocks = document.querySelectorAll('.text-container', 'logo'); 
@@ -52,4 +52,52 @@ document.addEventListener('DOMContentLoaded', () => {
         backDelay: 2500,
         loop: true
     });
+
+    /* ── Animación de frases con Intersection Observer ── */
+
+    //IntersectionObserver -> to detect when an element enters the viewport
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach(entry => {
+                /*
+                * entry.isIntersecting → true cuando el elemento
+                * ha entrado en la zona visible definida por 'threshold'
+                */
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.2,
+            rootMargin: '-10% 0px'
+        }
+    );
+
+    /* Observamos cada .phrase-container */
+    document.querySelectorAll('.phrase-container').forEach(el => {
+        observer.observe(el);
+    });
+
+    const esMovil = window.matchMedia('(max-width: 480px)').matches;
+
+    if (!esMovil) {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { threshold: 0.2, rootMargin: '-10% 0px' }
+        );
+
+        document.querySelectorAll('.phrase-container').forEach(el => {
+            observer.observe(el);
+        });
+    }
+
 });
