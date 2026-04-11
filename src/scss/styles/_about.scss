@@ -1,42 +1,117 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.container-grid{
-    @include m.grid(2, 1);
+/* ─── Sección About Me ─────────────────────────────────── */
+.container-grid {
+    /* 
+     * min-height: 200vh le da al contenedor suficiente altura 
+     * para que sticky tenga recorrido. Sin esto, sticky no funciona.
+     */
+    min-height: 200vh;
+    display: flex;
+    align-items: flex-start;  /* Los hijos empiezan desde arriba */
+    gap: 6rem;
+    padding: 4rem 8rem;
+    position: relative;
 
-    .photo-container{
+    /* ── Columna izquierda: foto ── */
+    .photo-container {
+        /*
+         * position: sticky + top: 10rem
+         * → La foto sube con el scroll hasta que su borde superior
+         *   esté a 10rem del top de la ventana. Ahí se ancla.
+         */
+        position: sticky;
+        top: 10rem;
+        flex: 0 0 auto;             /* No crece ni se encoge */
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
+        gap: 3rem;
 
-        .about-me{
-            margin-bottom: 10rem;
+        .about-me {
+            font-family: v.$fuente_textos;
+            letter-spacing: .5rem;
+            color: v.$verdeClaro;
+            font-size: 4rem;
         }
 
-        .photo{
-            max-width: 35rem;
+        .photo {
+            width: 30rem;
+            height: 30rem;
+            object-fit: cover;      /* La imagen rellena el círculo sin deformarse */
             border-radius: 50%;
+            border: 3px solid v.$verdeClaro;
+            box-shadow: 0 0 40px rgba(0, 240, 128, 0.2);
         }
     }
 
-    .text-container{
+    /* ── Columna derecha: textos ── */
+    .text-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-top: 2rem;
 
-        .phrase-container{
-            margin-bottom: 10rem;
+        .first-phrase{
+            margin-top: 50rem; /* Para que la primera frase no aparezca hasta que la foto se ancle */
+        }
 
-            .about-text{
+        .phrase-container {
+            margin-bottom: 15rem;
+            padding-left: 4rem;
+
+            /*
+             * Animación vinculada al scroll del contenedor raíz.
+             */
+            opacity: 0;
+            transform: translateX(80px) translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+
+            /* Cuando JS añada la clase .visible, la frase aparece */
+            &.visible {
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+
+            .about-text {
                 color: v.$blanco;
                 font-family: v.$fuente_textos;
+                font-size: 2.8rem;
+                font-weight: 300;
+                line-height: 1.4;
+
+                /* Línea decorativa a la izquierda de cada frase */
+                border-left: 3px solid v.$verdeClaro;
+                padding-left: 2rem;
             }
         }
-        
     }
 
-    h1{
-        font-family: v.$fuente_textos;
-        letter-spacing: .5rem;
-        color: v.$verdeClaro;
-        padding-bottom: 5rem;
+    @include m.telefono {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        min-height: unset; /*no sticky */
+
+        .photo-container {
+            position: unset;
+            top: unset;
+            margin-top: 25rem;
+        }
+
+        .text-container {
+
+            .first-phrase{
+                margin-top: 0; /* no tanto espacio arriba en móvil */
+            }
+
+            .phrase-container {
+                margin-bottom: 4rem; /* mucho menos espacio que en desktop */
+                padding-left: 0;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
     }
 }
