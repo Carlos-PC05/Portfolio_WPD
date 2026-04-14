@@ -1,0 +1,105 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.projects{
+    padding: 20rem 10rem 0 10rem;
+
+    .section-title{
+        font-family: v.$fuente_textos;
+        letter-spacing: .5rem;
+        color: v.$verdeClaro;
+        font-size: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    .section-subtitle{
+        font-family: v.$fuente_textos;
+        letter-spacing: .2rem;
+        color: v.$blanco;
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .container-grid{
+        @include m.grid(2, 5rem);
+
+        .name-container{
+            // Project Name
+            .project-topic{
+                font-family: v.$fuente_textos;
+                letter-spacing: .2rem;
+                color: v.$verde;
+                font-size: 1.5rem;
+            }
+
+            .project-name{
+                font-family: v.$fuente_textos;
+                letter-spacing: .2rem;
+                color: v.$verdeClaro;
+                font-size: 1.8rem;
+            }
+        }
+        // Project Content
+        .content-container{
+            background-color: v.$fondoSuperClaro;
+            max-width: fit-content;
+            display: flex;
+            flex-direction: column;
+            padding: 0 5rem;
+            border-radius: 7.50%;
+
+            .text-container{
+                display: flex;
+                padding: 2rem;
+                max-width: fit-content;
+
+                .project-desc{
+                    font-family: v.$fuente_textos;
+                    color: v.$blanco;
+                    font-size: 1.3rem;
+                }
+            }
+
+            .img-container{
+                background-color: v.$fondoSuperClaro;
+                min-height: 30rem;
+                max-height: 30rem;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                    border-radius: 5%;
+                }
+            }
+        }
+        // Project Languages and Tools
+        .languages-container{
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+
+            .language{
+                background-color: v.$fondoClaro;
+                color: v.$blanco;
+                font-family: v.$fuente_textos;
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+                border-radius: 20px;
+            }
+        }
+
+        @include m.telefono {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    @include m.tablet {
+        padding: 10rem 7rem;
+    }
+
+    @include m.telefono {
+        padding: 10rem 5rem;
+    }
+}
