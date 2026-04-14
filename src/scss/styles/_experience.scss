@@ -1,0 +1,14 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.experience{
+    padding: 5rem 10rem;
+
+    .experience-title{
+        font-family: v.$fuente_textos;
+        letter-spacing: .5rem;
+        color: v.$verdeClaro;
+        font-size: 4rem;
+        margin-bottom: 2rem;
+    }
+}
