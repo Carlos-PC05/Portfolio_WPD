@@ -22,7 +22,7 @@
      <div class="cursor-esfera"></div>
 
     <!-- Navegation -->
-    <div class="nav">
+    <div class="nav" id="home">
         <div class="logo-container">
             <a href="/index.html">
                 <img class="logo" src="src/img/Logo.svg" alt="Logo">
@@ -39,10 +39,10 @@
         </label>
 
         <div class="nav-container">
-            <a href="">Home</a>
-            <a href="">About Me</a>
-            <a href="">Projects</a>
-            <a href="">My experience</a>
+            <a href="index.html">Home</a>
+            <a href="#about">About Me</a>
+            <a href="#projects">Projects</a>
+            <a href="#experience">My experience</a>
         </div>
     </div>
 
@@ -85,7 +85,7 @@
 
     <!-- About me section -->
 
-    <section class="container-grid">
+    <section class="container-grid" id="about">
         <div class="photo-container">
             <h1 class="about-me">About me</h1>
             <img src="src/img/portafolio.jpg" alt="Imagen mía" class="photo">
@@ -108,7 +108,7 @@
 
     <!-- Projects section -->
 
-    <section class="projects">
+    <section class="projects" id="projects">
         <h1 class="section-title">Projects</h1>
         <h3 class="section-subtitle">Those are some of the projects I've built in my career as a Computer Scientist</h3>
 
@@ -201,17 +201,49 @@
 
     <!-- Experience section -->
 
-    <section class="experience">
+    <section class="experience" id="experience">
         <h1 class="section-title experience-title">
             My experience
         </h1>
+
+        <div class="timeline">
+
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-role">Programming Teacher</h2>
+                    <span class="timeline-date">Summer 2026</span>
+                    <p class="timeline-desc">
+                        Placeholder description
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-role">Sport Model</h2>
+                    <span class="timeline-date">Aug 2025</span>
+                    <p class="timeline-desc">
+                        Placeholder description
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h2 class="timeline-role">Robotics Teacher</h2>
+                    <span class="timeline-date">Jun 2025</span>
+                    <p class="timeline-desc">
+                        Placeholder description
+                    </p>
+                </div>
+            </div>
+
+        </div>
 
     </section>
 
 
     <!-- Footer -->
     <footer class="footer-page">
-
+        
     </footer>
 
     <!-- Scripts -->

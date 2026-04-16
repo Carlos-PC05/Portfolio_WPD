@@ -344,6 +344,10 @@ img {
   max-width: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: #2B332F;
 }
@@ -473,6 +477,17 @@ body {
   .nav .menu-toggle-input:checked ~ .nav-container {
     display: flex;
   }
+}
+
+/* Fixed navegation */
+.nav.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding-right: 10rem;
+  background-color: transparent;
 }
 
 .content-container {
@@ -712,7 +727,7 @@ body {
   padding: 0.5rem 1rem;
   border-radius: 20px;
 }
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .projects .container-grid {
     display: flex;
     flex-direction: column;
@@ -731,6 +746,7 @@ body {
 
 .experience {
   padding: 5rem 10rem;
+  /* ─── Timeline ─────────────────────────────────────────── */
 }
 .experience .experience-title {
   font-family: "Josefin Sans", sans-serif;
@@ -738,6 +754,79 @@ body {
   color: #00F080;
   font-size: 4rem;
   margin-bottom: 2rem;
+}
+.experience .timeline {
+  position: relative;
+  padding-left: 30rem;
+  margin-top: 5rem;
+  /* ─── Each entry ───────────────────────────────────── */
+}
+.experience .timeline::before {
+  content: "";
+  position: absolute;
+  left: 26rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #339C6B;
+}
+.experience .timeline .timeline-item {
+  position: relative;
+  margin-bottom: 8rem;
+  /* Green dot on the timeline */
+}
+.experience .timeline .timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -4.6rem; /* Lo saca hacia la izquierda hasta la línea */
+  top: 0.6rem; /* Alineado con la primera línea de texto */
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%; /* Lo convierte en círculo */
+  background-color: #00F080;
+  box-shadow: 0 0 10px rgba(0, 240, 128, 0.5);
+}
+.experience .timeline .timeline-content .timeline-role {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #00F080;
+  letter-spacing: 0.1rem;
+  margin: 0 0 0.5rem 0;
+}
+.experience .timeline .timeline-content .timeline-date {
+  display: block; /* Para que ocupe su propia línea */
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #339C6B;
+  letter-spacing: 0.06rem;
+  margin-bottom: 1.5rem;
+}
+.experience .timeline .timeline-content .timeline-desc {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.07rem;
+  line-height: 1.7;
+  max-width: 89rem;
+}
+@media (max-width: 1024px) {
+  .experience .timeline {
+    padding-left: 10rem;
+  }
+  .experience .timeline::before {
+    left: 6rem;
+  }
+}
+@media (max-width: 600px) {
+  .experience .timeline {
+    padding-left: 3rem;
+  }
+  .experience .timeline::before {
+    left: -1rem;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

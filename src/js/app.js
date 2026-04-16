@@ -100,4 +100,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Fixed navegation
+    const nav = document.querySelector('.nav');
+    const foto = document.querySelector('.photo');
+
+    document.addEventListener('scroll', function(){
+        console.log(foto.getBoundingClientRect().top)
+        if(foto.getBoundingClientRect().top < 500){
+            nav.classList.add('fixed');
+        }else{
+            nav.classList.remove('fixed');
+        }
+    });
+
 });
