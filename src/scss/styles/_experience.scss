@@ -11,4 +11,90 @@
         font-size: 4rem;
         margin-bottom: 2rem;
     }
+
+    /* ─── Timeline ─────────────────────────────────────────── */
+    .timeline{
+        position: relative;
+        padding-left: 30rem;
+        margin-top: 5rem;
+
+        //Vertical line
+        &::before{
+            content: '';
+            position: absolute;
+            left: 26rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: v.$fondoSuperClaro;
+        }
+
+        /* ─── Each entry ───────────────────────────────────── */
+        
+        .timeline-item {
+            position: relative;  
+            margin-bottom: 8rem;
+
+            /* Green dot on the timeline */
+            &::before {
+                content: '';
+                position: absolute;
+                left: -4.6rem;          /* Lo saca hacia la izquierda hasta la línea */
+                top: 0.6rem;            /* Alineado con la primera línea de texto */
+                width: 1.4rem;
+                height: 1.4rem;
+                border-radius: 50%;     /* Lo convierte en círculo */
+                background-color: v.$verdeClaro;
+                box-shadow: 0 0 10px rgba(0, 240, 128, 0.5);
+            }
+        }
+
+        .timeline-content{
+
+            .timeline-role {
+                font-family: v.$fuente_headings;
+                font-size: 2rem;
+                font-weight: 600;
+                color: v.$verdeClaro;
+                letter-spacing: .1rem;
+                margin: 0 0 0.5rem 0;
+            }
+
+            .timeline-date {
+                display: block;          /* Para que ocupe su propia línea */
+                font-family: v.$fuente_headings;
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: v.$fondoSuperClaro;
+                letter-spacing: .06rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .timeline-desc {
+                font-family: v.$fuente_headings;
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: v.$blanco;
+                letter-spacing: .07rem;
+                line-height: 1.7;
+                max-width: 89rem;
+            }
+        }
+
+        @include m.desktop{
+            padding-left: 10rem;
+
+            &::before{
+                left: 6rem;
+            }
+        }   
+
+        @include m.telefono{
+            padding-left: 3rem;
+
+            &::before{
+                left: -1rem;
+            }
+        }
+    }
 }

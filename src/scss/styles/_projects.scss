@@ -89,7 +89,7 @@
             }
         }
 
-        @include m.telefono {
+        @include m.desktop {
             display: flex;
             flex-direction: column;
         }

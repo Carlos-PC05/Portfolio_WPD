@@ -1,6 +1,10 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
+html{
+    scroll-behavior: smooth ;
+}
+
 body{
     background-color: v.$fondo;
 }
@@ -150,6 +154,18 @@ body{
         }
     }
 }
+
+/* Fixed navegation */
+.nav.fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding-right: 10rem;
+    background-color: transparent;
+}
+
 
 .content-container{
     min-height: 45rem;
