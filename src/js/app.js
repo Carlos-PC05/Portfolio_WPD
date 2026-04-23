@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         esfera.style.top = e.clientY + 'px';
     });
 
-    // 2. Define which elements activate each effect:
+    //Define which elements activate each effect:
 
     // 'a' for links, 'i' for social media icons
     const links = document.querySelectorAll('a, i, .hamburger');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const textBlocks = document.querySelectorAll('.text-container', 'logo');
 
 
-    // 3. LINK EFFECT: Hide sphere when entering, show when leaving
+    //LINK EFFECT: Hide sphere when entering, show when leaving
     links.forEach(link => {
         link.addEventListener('mouseenter', () => {
             esfera.classList.add('on-link');
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 4. TEXT EFFECT: Enlarge sphere when entering, normalize when leaving
+    //TEXT EFFECT: Enlarge sphere when entering, normalize when leaving
     textBlocks.forEach(textBlock => {
         textBlock.addEventListener('mouseenter', () => {
             esfera.classList.add('on-text');
@@ -59,10 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach(entry => {
-                /*
-                * entry.isIntersecting → true when the element
-                * has entered the visible area defined by 'threshold'
-                */
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);

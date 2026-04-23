@@ -165,32 +165,24 @@
             align-items: flex-start;
             padding-left: 3rem;
 
-            /* En móvil la línea va a la izquierda, como en la versión anterior */
             &::before {
                 left: 0.8rem;
                 transform: none;
             }
 
             .timeline-item {
-                /* Cancelamos el grid de 3 columnas y usamos bloque simple */
                 display: block;
                 padding-left: 3rem;
                 width: 100%;
 
-                /* Ocultamos los nodos del grid y usamos ::before en su lugar */
                 .timeline-node {
                     display: none;
                 }
 
-                /* Reposicionamos la línea conectora para que no aparezca */
                 .timeline-card::after {
                     display: none;
                 }
 
-                /*
-                 * Simulamos el nodo con ::before en la tarjeta
-                 * posicionado a la izquierda
-                 */
                 .timeline-card {
                     &::before {
                         content: '';

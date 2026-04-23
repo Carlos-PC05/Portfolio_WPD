@@ -667,80 +667,162 @@ body {
   color: #ffffff;
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  max-width: 72rem;
 }
 .projects .container-grid {
   display: grid;
   gap: 5rem;
   grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+}
+.projects .container-grid .project-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+.projects .container-grid .name-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
 }
 .projects .container-grid .name-container .project-topic {
   font-family: "Josefin Sans", sans-serif;
   letter-spacing: 0.2rem;
   color: #21C478;
   font-size: 1.5rem;
+  margin: 0;
 }
 .projects .container-grid .name-container .project-name {
   font-family: "Josefin Sans", sans-serif;
   letter-spacing: 0.2rem;
   color: #00F080;
   font-size: 1.8rem;
+  margin: 0;
 }
 .projects .container-grid .content-container {
-  background-color: #339C6B;
-  max-width: fit-content;
   display: flex;
   flex-direction: column;
-  padding: 0 5rem;
-  border-radius: 7.5%;
+  gap: 1.6rem;
+  padding: 1.8rem;
+  border-radius: 2rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 240, 128, 0.12);
+  box-shadow: 0 1.6rem 3.2rem rgba(0, 0, 0, 0.12);
+}
+.projects .container-grid .content-container .project-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 .projects .container-grid .content-container .text-container {
   display: flex;
-  padding: 2rem;
-  max-width: fit-content;
+  padding: 0 0.2rem;
+  max-width: none;
 }
 .projects .container-grid .content-container .text-container .project-desc {
   font-family: "Josefin Sans", sans-serif;
-  color: #ffffff;
-  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  margin: 0;
 }
 .projects .container-grid .content-container .img-container {
-  background-color: #339C6B;
-  min-height: 30rem;
-  max-height: 30rem;
-}
-.projects .container-grid .content-container .img-container img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: fill;
-  border-radius: 5%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 1.4rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0.8rem 1.8rem rgba(0, 0, 0, 0.08);
+  transition: border-color 0.2s ease;
+}
+.projects .container-grid .content-container .img-container:hover, .projects .container-grid .content-container .img-container:focus-visible {
+  border-color: rgba(0, 240, 128, 0.24);
+  outline: none;
+}
+.projects .container-grid .content-container .img-container--placeholder {
+  display: grid;
+  place-items: center;
+  padding: 1.8rem;
+  background-color: rgba(0, 240, 128, 0.05);
+}
+.projects .container-grid .content-container .img-container--placeholder .project-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  text-align: center;
+  max-width: 22rem;
+}
+.projects .container-grid .content-container .img-container--placeholder .project-placeholder-label {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.18rem;
+  text-transform: uppercase;
+  color: rgba(0, 240, 128, 0.78);
+}
+.projects .container-grid .content-container .img-container--placeholder .project-placeholder-title {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.88);
 }
 .projects .container-grid .languages-container {
   display: flex;
-  gap: 1rem;
-  padding: 1rem 0;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0;
 }
 .projects .container-grid .languages-container .language {
-  background-color: #2E453A;
-  color: #ffffff;
+  background-color: rgba(0, 240, 128, 0.08);
+  color: rgba(255, 255, 255, 0.86);
   font-family: "Josefin Sans", sans-serif;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  font-size: 0.95rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 240, 128, 0.12);
 }
 @media (max-width: 1024px) {
   .projects .container-grid {
     display: flex;
     flex-direction: column;
+    gap: 5rem;
   }
 }
 @media (max-width: 768px) {
   .projects {
     padding: 10rem 7rem;
   }
+  .projects .container-grid .content-container {
+    padding: 1.6rem;
+  }
 }
 @media (max-width: 600px) {
   .projects {
     padding: 10rem 5rem;
+  }
+  .projects .container-grid {
+    gap: 4rem;
+  }
+  .projects .container-grid .content-container {
+    gap: 1.4rem;
+    padding: 1.4rem;
+    border-radius: 1.6rem;
+  }
+  .projects .container-grid .content-container .text-container .project-desc {
+    font-size: 1.2rem;
+  }
+  .projects .container-grid .content-container .img-container {
+    border-radius: 1.2rem;
+  }
+  .projects .container-grid .content-container .img-container--placeholder {
+    padding: 1.2rem;
+  }
+  .projects .container-grid .content-container .img-container--placeholder .project-placeholder-title {
+    font-size: 1.4rem;
   }
 }
 
@@ -881,23 +963,15 @@ body {
   .experience .timeline {
     align-items: flex-start;
     padding-left: 3rem;
-    /* En móvil la línea va a la izquierda, como en la versión anterior */
   }
   .experience .timeline::before {
     left: 0.8rem;
     transform: none;
   }
   .experience .timeline .timeline-item {
-    /* Cancelamos el grid de 3 columnas y usamos bloque simple */
     display: block;
     padding-left: 3rem;
     width: 100%;
-    /* Ocultamos los nodos del grid y usamos ::before en su lugar */
-    /* Reposicionamos la línea conectora para que no aparezca */
-    /*
-     * Simulamos el nodo con ::before en la tarjeta
-     * posicionado a la izquierda
-     */
   }
   .experience .timeline .timeline-item .timeline-node {
     display: none;
