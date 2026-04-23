@@ -2,23 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const changingText = document.querySelector('#texto-cambiante');
     const esfera = document.querySelector('.cursor-esfera');
 
-    // Escuchamos el movimiento del ratón en toda la pantalla
+    // Listen to mouse movement across the entire screen
     document.addEventListener('mousemove', (e) => {
-        // e.clientX y e.clientY nos dan la posición exacta del ratón
+        // e.clientX and e.clientY give us the exact position of the mouse
         esfera.style.left = e.clientX + 'px';
         esfera.style.top = e.clientY + 'px';
     });
 
-    // 2. Definimos qué elementos activan cada efecto:
+    //Define which elements activate each effect:
 
-    // 'a' para enlaces, 'i' para tus iconos de redes sociales (que supongo que son enlaces)
-    const links = document.querySelectorAll('a, i, .hamburger'); 
+    // 'a' for links, 'i' for social media icons
+    const links = document.querySelectorAll('a, i, .hamburger');
 
-    // 'h1', 'p', 'li' para textos donde queremos el efecto de "Lupa"
-    const textBlocks = document.querySelectorAll('.text-container', 'logo'); 
+    // textBlocks where we want the "Magnifier" effect
+    const textBlocks = document.querySelectorAll('.text-container', 'logo');
 
 
-    // 3. EFECTO LINK: Ocultar esfera al entrar, mostrar al salir
+    //LINK EFFECT: Hide sphere when entering, show when leaving
     links.forEach(link => {
         link.addEventListener('mouseenter', () => {
             esfera.classList.add('on-link');
@@ -29,18 +29,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // 4. EFECTO TEXTO: Agrandar esfera al entrar, normalizar al salir
+    //TEXT EFFECT: Enlarge sphere when entering, normalize when leaving
     textBlocks.forEach(textBlock => {
         textBlock.addEventListener('mouseenter', () => {
             esfera.classList.add('on-text');
         });
         textBlock.addEventListener('mouseleave', () => {
-          esfera.classList.remove('on-text');
+            esfera.classList.remove('on-text');
         });
     });
 
 
-    /* Texto cambiante */
+    /* Changing text */
     if (!changingText || typeof Typed === 'undefined') {
         return;
     }
@@ -53,16 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
         loop: true
     });
 
-    /* ── Animación de frases con Intersection Observer ── */
+    /* ── Animation of phrases with Intersection Observer ── */
 
     //IntersectionObserver -> to detect when an element enters the viewport
     const observer = new IntersectionObserver(
         (entries) => {
             entries.forEach(entry => {
-                /*
-                * entry.isIntersecting → true cuando el elemento
-                * ha entrado en la zona visible definida por 'threshold'
-                */
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
@@ -75,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     );
 
-    /* Observamos cada .phrase-container */
+    /* We observe each .phrase-container */
     document.querySelectorAll('.phrase-container').forEach(el => {
         observer.observe(el);
     });
@@ -104,11 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav');
     const foto = document.querySelector('.photo');
 
-    document.addEventListener('scroll', function(){
+    document.addEventListener('scroll', function () {
         console.log(foto.getBoundingClientRect().top)
-        if(foto.getBoundingClientRect().top < 500){
+        if (foto.getBoundingClientRect().top < 500) {
             nav.classList.add('fixed');
-        }else{
+        } else {
             nav.classList.remove('fixed');
         }
     });

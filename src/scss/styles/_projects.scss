@@ -1,10 +1,10 @@
 @use '../base/variables' as v;
 @use '../base/mixins' as m;
 
-.projects{
+.projects {
     padding: 20rem 10rem 0 10rem;
 
-    .section-title{
+    .section-title {
         font-family: v.$fuente_textos;
         letter-spacing: .5rem;
         color: v.$verdeClaro;
@@ -12,94 +12,195 @@
         margin-bottom: 2rem;
     }
 
-    .section-subtitle{
+    .section-subtitle {
         font-family: v.$fuente_textos;
         letter-spacing: .2rem;
         color: v.$blanco;
         font-size: 1.5rem;
         margin-bottom: 2rem;
+        max-width: 72rem;
     }
 
-    .container-grid{
+    .container-grid {
         @include m.grid(2, 5rem);
+        align-items: start;
 
-        .name-container{
+        .project-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .name-container {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+
             // Project Name
-            .project-topic{
+            .project-topic {
                 font-family: v.$fuente_textos;
                 letter-spacing: .2rem;
                 color: v.$verde;
                 font-size: 1.5rem;
+                margin: 0;
             }
 
-            .project-name{
+            .project-name {
                 font-family: v.$fuente_textos;
                 letter-spacing: .2rem;
                 color: v.$verdeClaro;
                 font-size: 1.8rem;
+                margin: 0;
             }
         }
+
         // Project Content
-        .content-container{
-            background-color: v.$fondoSuperClaro;
-            max-width: fit-content;
+        .content-container {
             display: flex;
             flex-direction: column;
-            padding: 0 5rem;
-            border-radius: 7.50%;
+            gap: 1.6rem;
+            padding: 1.8rem;
+            border-radius: 2rem;
+            background-color: rgba(v.$blanco, .03);
+            border: 1px solid rgba(v.$verdeClaro, .12);
+            box-shadow: 0 1.6rem 3.2rem rgba(v.$negro, .12);
 
-            .text-container{
+            .project-img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+            }
+
+            .text-container {
                 display: flex;
-                padding: 2rem;
-                max-width: fit-content;
+                padding: 0 .2rem;
+                max-width: none;
 
-                .project-desc{
+                .project-desc {
                     font-family: v.$fuente_textos;
-                    color: v.$blanco;
-                    font-size: 1.3rem;
+                    color: rgba(v.$blanco, .88);
+                    font-size: 1.25rem;
+                    line-height: 1.6;
+                    margin: 0;
                 }
             }
 
-            .img-container{
-                background-color: v.$fondoSuperClaro;
-                min-height: 30rem;
-                max-height: 30rem;
+            .img-container {
+                display: block;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+                border-radius: 1.4rem;
+                background-color: rgba(v.$blanco, .05);
+                border: 1px solid rgba(v.$blanco, .1);
+                box-shadow: 0 .8rem 1.8rem rgba(v.$negro, .08);
+                transition: border-color .2s ease;
 
-                img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: fill;
-                    border-radius: 5%;
+                &:hover,
+                &:focus-visible {
+                    border-color: rgba(v.$verdeClaro, .24);
+                    outline: none;
+                }
+            }
+
+            .img-container--placeholder {
+                display: grid;
+                place-items: center;
+                padding: 1.8rem;
+                background-color: rgba(v.$verdeClaro, .05);
+
+                .project-placeholder {
+                    display: flex;
+                    flex-direction: column;
+                    gap: .6rem;
+                    align-items: center;
+                    text-align: center;
+                    max-width: 22rem;
+                }
+
+                .project-placeholder-label {
+                    font-family: v.$fuente_headings;
+                    font-size: .95rem;
+                    letter-spacing: .18rem;
+                    text-transform: uppercase;
+                    color: rgba(v.$verdeClaro, .78);
+                }
+
+                .project-placeholder-title {
+                    font-family: v.$fuente_textos;
+                    font-size: 1.5rem;
+                    line-height: 1.3;
+                    color: rgba(v.$blanco, .88);
                 }
             }
         }
-        // Project Languages and Tools
-        .languages-container{
-            display: flex;
-            gap: 1rem;
-            padding: 1rem 0;
 
-            .language{
-                background-color: v.$fondoClaro;
-                color: v.$blanco;
+        // Project Languages and Tools
+        .languages-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem;
+            padding: 0;
+
+            .language {
+                background-color: rgba(v.$verdeClaro, .08);
+                color: rgba(v.$blanco, .86);
                 font-family: v.$fuente_textos;
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-                border-radius: 20px;
+                font-size: .95rem;
+                padding: .55rem .95rem;
+                border-radius: 999px;
+                border: 1px solid rgba(v.$verdeClaro, .12);
             }
         }
 
         @include m.desktop {
             display: flex;
             flex-direction: column;
+            gap: 5rem;
         }
     }
 
     @include m.tablet {
         padding: 10rem 7rem;
+
+        .container-grid {
+            .content-container {
+                padding: 1.6rem;
+            }
+        }
     }
 
     @include m.telefono {
         padding: 10rem 5rem;
+
+        .container-grid {
+            gap: 4rem;
+
+            .content-container {
+                gap: 1.4rem;
+                padding: 1.4rem;
+                border-radius: 1.6rem;
+
+                .text-container {
+                    .project-desc {
+                        font-size: 1.2rem;
+                    }
+                }
+
+                .img-container {
+                    border-radius: 1.2rem;
+                }
+
+                .img-container--placeholder {
+                    padding: 1.2rem;
+
+                    .project-placeholder-title {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
     }
 }

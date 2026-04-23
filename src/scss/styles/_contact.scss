@@ -1,0 +1,172 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.contact {
+    padding: 20rem 10rem 10rem 10rem;
+
+    .section-title {
+        font-family: v.$fuente_textos;
+        letter-spacing: .5rem;
+        color: v.$verdeClaro;
+        font-size: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-subtitle {
+        font-family: v.$fuente_textos;
+        letter-spacing: .2rem;
+        color: v.$blanco;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+
+        margin-bottom: 3rem;
+    }
+
+    /* Open to Work Styles */
+    .open-to-work {
+        margin-top: 5rem;
+        overflow: hidden;
+        border-radius: 999rem;
+        border: .2rem solid rgba(v.$verdeClaro, .35);
+        background: linear-gradient(90deg, rgba(v.$verdeClaro, .92) 0%, rgba(v.$verde, .96) 100%);
+        box-shadow: 0 0 2.4rem rgba(v.$verdeClaro, .16);
+
+        .open-to-work-track {
+            display: flex;
+            align-items: center;
+            gap: 2.4rem;
+            width: max-content;
+            padding: 1.5rem 0;
+            animation: open-to-work-scroll 16s linear infinite;
+        }
+
+        .open-to-work-item,
+        .open-to-work-separator {
+            flex: 0 0 auto;
+            color: v.$fondo;
+            font-family: v.$fuente_headings;
+            font-size: 2rem;
+            font-weight: v.$negrita;
+            letter-spacing: .4rem;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .open-to-work-separator {
+            color: rgba(v.$fondo, .7);
+            font-size: 2.4rem;
+            letter-spacing: 0;
+        }
+    }
+
+    .contact-container {
+        margin-top: 8rem;
+
+        /* Media Styles */
+        .media-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+
+            .contact-icon-link {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 6.4rem;
+                height: 6.4rem;
+                color: v.$verdeClaro;
+                border: .2rem solid rgba(v.$verdeClaro, .35);
+                border-radius: 50%;
+                background-color: rgba(v.$verdeClaro, .06);
+                transition: transform .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .25s ease;
+
+                &:hover,
+                &:focus-visible {
+                    cursor: none;
+                    transform: translateY(-.4rem);
+                    background-color: rgba(v.$verdeClaro, .14);
+                    border-color: rgba(v.$verdeClaro, .85);
+                    box-shadow: 0 0 2rem rgba(v.$verdeClaro, .18);
+                    outline: none;
+                }
+
+                .contact-icon {
+                    width: 2.8rem;
+                    height: 2.8rem;
+                    display: block;
+                    fill: currentColor;
+                }
+
+                .linkedin-icon {
+                    background-color: currentColor;
+                    -webkit-mask-image: url('../img/linkedIn/LI-In-Bug.png');
+                    -webkit-mask-repeat: no-repeat;
+                    -webkit-mask-position: center;
+                    -webkit-mask-size: contain;
+                    mask-image: url('../img/linkedIn/LI-In-Bug.png');
+                    mask-repeat: no-repeat;
+                    mask-position: center;
+                    mask-size: contain;
+                }
+            }
+
+            .media-text {
+                font-family: v.$fuente_textos;
+                letter-spacing: .2rem;
+                color: v.$blanco;
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+        }
+    }
+
+    @include m.telefono {
+        padding: 12rem 5rem 8rem 5rem;
+
+        .open-to-work {
+            margin-top: 4rem;
+
+            .open-to-work-track {
+                gap: 1.6rem;
+                padding: 1.2rem 0;
+                animation-duration: 12s;
+            }
+
+            .open-to-work-item,
+            .open-to-work-separator {
+                font-size: 1.5rem;
+                letter-spacing: .3rem;
+            }
+
+            .open-to-work-separator {
+                font-size: 1.8rem;
+                letter-spacing: 0;
+            }
+        }
+
+        .media-container {
+            gap: 2rem;
+        }
+
+        .contact-icon-link {
+            width: 5.6rem;
+            height: 5.6rem;
+        }
+
+        .contact-icon {
+            width: 2.4rem;
+            height: 2.4rem;
+        }
+    }
+}
+
+@keyframes open-to-work-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
