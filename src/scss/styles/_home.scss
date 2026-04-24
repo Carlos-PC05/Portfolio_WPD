@@ -9,13 +9,13 @@ body{
     background-color: v.$fondo;
 }
 
-/* --- Estilo base (Pequeño punto verde) --- */
+/* --- Green sphere --- */
 .cursor-esfera {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background-color: v.$verdeClaro; /* Verde brillante */
   border-radius: 50%;
   pointer-events: none;
@@ -32,38 +32,27 @@ body{
               top 0.3s ease-out;
 }
 
-/* --- ESTADO 1: Sobre Enlaces/Iconos (Aparece y Desaparece Fluidamente) --- */
+/* --- ESTATE 0 -> default --- */
 .cursor-esfera.on-link {
-  width: 0px;      /* Se encoge */
+  width: 0px;      
   height: 0px;
-  opacity: 0;       /* Desaparece */
+  opacity: 0;       /* Disapear */
 }
 
-/* --- ESTADO 2: Sobre Bloques de Texto (Se hace Gigante y Translúcida) --- */
+/* --- ESTATE 1 -> over text --- */
 .cursor-esfera.on-text {
-  width: 40rem;          /* Se hace enorme */
-  height: 40rem;
-  
-  /* Efecto translúcido y transparente */
-  background-color: v.$verdeClaro;/* Verde opaco al 20% */
-  
-  /* OPCIONAL: Un borde sutil para definir la esfera */
-  /* border: 1px solid rgba(46, 204, 113, 0.5); */
-
-  /* El truco avanzado de Michal (a veces invertido): */
+  width: 15rem;          /* It gets larger */
+  height: 15rem;
+  background-color: v.$verdeClaro;
   mix-blend-mode: difference;
-  /* (Nota: 'mix-blend-mode' requiere mucha potencia gráfica, 
-      prueba la opacidad simple primero como te pongo arriba) */
 }
 
-//transition: left 0.3s ease-out, top 0.3s ease-out; 
-
-/* Ocultar el checkbox — nunca debe verse */
+/* Hide Checkbox */
 .menu-toggle-input {
     display: none;
 }
 
-/* El botón hamburguesa: oculto en desktop, visible en móvil */
+/* burguer menu */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -115,10 +104,10 @@ body{
     }
 
     @include m.telefono {
-        align-items: center; /* logo y hamburguesa alineados */
+        align-items: center;
 
         .hamburger {
-            display: flex; /* solo visible en móvil */
+            display: flex;
 
             &:hover {
                 cursor: none;
@@ -141,7 +130,7 @@ body{
             justify-content: center;
             align-items: center;
             gap: 4rem;
-            z-index: 99; /* debajo del checkbox pero sobre el contenido */
+            z-index: 99; 
 
             a {
                 font-size: 3rem;
