@@ -352,13 +352,13 @@ body {
   background-color: #2B332F;
 }
 
-/* --- Estilo base (Pequeño punto verde) --- */
+/* --- Green sphere --- */
 .cursor-esfera {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background-color: #00F080; /* Verde brillante */
   border-radius: 50%;
   pointer-events: none;
@@ -368,33 +368,27 @@ body {
   transition: width 0.5s ease-out, height 0.5s ease-out, opacity 0.5s ease, background-color 0.5s ease, border 0.5s ease, left 0.3s ease-out, top 0.3s ease-out;
 }
 
-/* --- ESTADO 1: Sobre Enlaces/Iconos (Aparece y Desaparece Fluidamente) --- */
+/* --- ESTATE 0 -> default --- */
 .cursor-esfera.on-link {
-  width: 0px; /* Se encoge */
+  width: 0px;
   height: 0px;
-  opacity: 0; /* Desaparece */
+  opacity: 0; /* Disapear */
 }
 
-/* --- ESTADO 2: Sobre Bloques de Texto (Se hace Gigante y Translúcida) --- */
+/* --- ESTATE 1 -> over text --- */
 .cursor-esfera.on-text {
-  width: 40rem; /* Se hace enorme */
-  height: 40rem;
-  /* Efecto translúcido y transparente */
-  background-color: #00F080; /* Verde opaco al 20% */
-  /* OPCIONAL: Un borde sutil para definir la esfera */
-  /* border: 1px solid rgba(46, 204, 113, 0.5); */
-  /* El truco avanzado de Michal (a veces invertido): */
+  width: 15rem; /* It gets larger */
+  height: 15rem;
+  background-color: #00F080;
   mix-blend-mode: difference;
-  /* (Nota: 'mix-blend-mode' requiere mucha potencia gráfica, 
-      prueba la opacidad simple primero como te pongo arriba) */
 }
 
-/* Ocultar el checkbox — nunca debe verse */
+/* Hide Checkbox */
 .menu-toggle-input {
   display: none;
 }
 
-/* El botón hamburguesa: oculto en desktop, visible en móvil */
+/* burguer menu */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -445,10 +439,10 @@ body {
 }
 @media (max-width: 600px) {
   .nav {
-    align-items: center; /* logo y hamburguesa alineados */
+    align-items: center;
   }
   .nav .hamburger {
-    display: flex; /* solo visible en móvil */
+    display: flex;
   }
   .nav .hamburger:hover {
     cursor: none;
@@ -468,7 +462,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 4rem;
-    z-index: 99; /* debajo del checkbox pero sobre el contenido */
+    z-index: 99;
   }
   .nav .nav-container a {
     font-size: 3rem;
@@ -553,28 +547,17 @@ body {
 
 /* ─── Sección About Me ─────────────────────────────────── */
 .container-grid {
-  /* 
-   * min-height: 200vh le da al contenedor suficiente altura 
-   * para que sticky tenga recorrido. Sin esto, sticky no funciona.
-   */
   min-height: 200vh;
   display: flex;
-  align-items: flex-start; /* Los hijos empiezan desde arriba */
+  align-items: flex-start;
   gap: 6rem;
   padding: 4rem 8rem;
   position: relative;
-  /* ── Columna izquierda: foto ── */
-  /* ── Columna derecha: textos ── */
 }
 .container-grid .photo-container {
-  /*
-   * position: sticky + top: 10rem
-   * → La foto sube con el scroll hasta que su borde superior
-   *   esté a 10rem del top de la ventana. Ahí se ancla.
-   */
   position: sticky;
   top: 10rem;
-  flex: 0 0 auto; /* No crece ni se encoge */
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -589,7 +572,7 @@ body {
 .container-grid .photo-container .photo {
   width: 30rem;
   height: 30rem;
-  object-fit: cover; /* La imagen rellena el círculo sin deformarse */
+  object-fit: cover;
   border-radius: 50%;
   border: 3px solid #00F080;
   box-shadow: 0 0 40px rgba(0, 240, 128, 0.2);
@@ -601,18 +584,14 @@ body {
   padding-top: 2rem;
 }
 .container-grid .text-container .first-phrase {
-  margin-top: 50rem; /* Para que la primera frase no aparezca hasta que la foto se ancle */
+  margin-top: 50rem;
 }
 .container-grid .text-container .phrase-container {
   margin-bottom: 15rem;
   padding-left: 4rem;
-  /*
-   * Animación vinculada al scroll del contenedor raíz.
-   */
   opacity: 0;
   transform: translateX(80px) translateY(30px);
   transition: opacity 0.6s ease, transform 0.6s ease;
-  /* Cuando JS añada la clase .visible, la frase aparece */
 }
 .container-grid .text-container .phrase-container.visible {
   opacity: 1;
@@ -624,7 +603,6 @@ body {
   font-size: 2.8rem;
   font-weight: 300;
   line-height: 1.4;
-  /* Línea decorativa a la izquierda de cada frase */
   border-left: 3px solid #00F080;
   padding-left: 2rem;
 }
@@ -641,10 +619,10 @@ body {
     margin-top: 25rem;
   }
   .container-grid .text-container .first-phrase {
-    margin-top: 0; /* no tanto espacio arriba en móvil */
+    margin-top: 0;
   }
   .container-grid .text-container .phrase-container {
-    margin-bottom: 4rem; /* mucho menos espacio que en desktop */
+    margin-bottom: 4rem;
     padding-left: 0;
     opacity: 1 !important;
     transform: none !important;
