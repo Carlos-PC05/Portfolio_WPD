@@ -99,25 +99,72 @@
 
     <!-- About me section -->
 
-    <section class="container-grid" id="about">
-        <div class="photo-container">
-            <h1 class="about-me">About me</h1>
-            <img src="src/img/portafolio.jpg" alt="Image of myself" class="photo">
+    <section class="about" id="about">
+    
+        <div class="about-slide first" data-about-index="0">
+            <span class="about-bg-number" aria-hidden="true">01</span>
+            <div class="about-content">
+                <span class="about-tag">About me</span>
+                <h2 class="about-phrase">
+                    Hello! I'm a<br>
+                    <strong>Computer Science</strong><br>
+                    student in Spain
+                </h2>
+            </div>
+            <img src="src/img/portafolio.jpg" alt="Foto of mine" class="about-photo">
         </div>
-        <div class="text-container">
-            <div class="phrase-container first-phrase">
-                <h2 class="about-text">Hello! I'm a Computer Science student based on Spain</h2>
+    
+        <div class="about-slide" data-about-index="1">
+            <span class="about-bg-number" aria-hidden="true">02</span>
+            <div class="about-content">
+                <span class="about-tag">Passion</span>
+                <h2 class="about-phrase">
+                    I love playing<br>
+                    <strong>any kind of sport</strong>
+                </h2>
             </div>
-            <div class="phrase-container">
-                <h2 class="about-text">Besides Tech, I love playing any kind of sport</h2>
-            </div>
-            <div class="phrase-container">
-                <h2 class="about-text">I also love good coffe</h2>
-            </div>
-            <div class="phrase-container">
-                <h2 class="about-text">With music everywhere!</h2>
-            </div>
+            <!-- FOTO: cambia src por tu foto de deporte -->
+            <img
+                class="about-photo"
+                src="src/img/padel.jpg"
+                alt="Playing sport"
+            >
         </div>
+    
+        <div class="about-slide" data-about-index="2">
+            <span class="about-bg-number" aria-hidden="true">03</span>
+            <div class="about-content">
+                <span class="about-tag">Daily ritual</span>
+                <h2 class="about-phrase">
+                    I also love<br>
+                    <strong>good coffee</strong>
+                </h2>
+            </div>
+            <!-- FOTO: cambia src por tu foto de cafetería -->
+            <img
+                class="about-photo"
+                src="src/img/coffe.jpg"
+                alt="Enjoying coffee"
+            >
+        </div>
+    
+        <div class="about-slide" data-about-index="3">
+            <span class="about-bg-number" aria-hidden="true">04</span>
+            <div class="about-content">
+                <span class="about-tag">Always</span>
+                <h2 class="about-phrase">
+                    With music<br>
+                    <strong>everywhere</strong>
+                </h2>
+            </div>
+            <!-- FOTO: cambia src por tu foto con auriculares -->
+            <img
+                class="about-photo"
+                src="src/img/concert.jpg"
+                alt="Listening to music"
+            >
+        </div>
+    
     </section>
 
     <!-- Projects section -->

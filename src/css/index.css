@@ -545,87 +545,147 @@ body {
   }
 }
 
-/* ─── Sección About Me ─────────────────────────────────── */
-.container-grid {
-  min-height: 200vh;
-  display: flex;
-  align-items: flex-start;
-  gap: 6rem;
-  padding: 4rem 8rem;
+.about {
+  /* ── Cada bloque ocupa la pantalla completa ── */
+  /* ── Contenido: tag + frase principal ─── */
+  /* ── Foto: entra desde la derecha ─── */
+  /* ── Estado ACTIVO — lo añade el IntersectionObserver ─── */
+  /* ── Responsive ── */
+}
+.about .about-slide {
   position: relative;
-}
-.container-grid .photo-container {
-  position: sticky;
-  top: 10rem;
-  flex: 0 0 auto;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  padding: 0 10rem;
+  overflow: hidden;
+  /* Línea separadora sutil entre slides */
 }
-.container-grid .photo-container .about-me {
-  font-family: "Josefin Sans", sans-serif;
-  letter-spacing: 0.5rem;
-  color: #00F080;
-  font-size: 4rem;
+.about .about-slide + .about-slide {
+  border-top: 1px solid rgba(0, 240, 128, 0.07);
 }
-.container-grid .photo-container .photo {
-  width: 30rem;
-  height: 30rem;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #00F080;
-  box-shadow: 0 0 40px rgba(0, 240, 128, 0.2);
-}
-.container-grid .text-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding-top: 2rem;
-}
-.container-grid .text-container .first-phrase {
-  margin-top: 50rem;
-}
-.container-grid .text-container .phrase-container {
-  margin-bottom: 15rem;
-  padding-left: 4rem;
+.about .about-bg-number {
+  position: absolute;
+  right: 10rem;
+  top: 50%;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: clamp(18rem, 28vw, 32rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 240, 128, 0.06);
+  user-select: none;
+  pointer-events: none;
+  /* Estado inicial */
   opacity: 0;
-  transform: translateX(80px) translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(-45%);
+  transition: opacity 0.9s ease, transform 0.9s ease, -webkit-text-stroke 0.9s ease;
 }
-.container-grid .text-container .phrase-container.visible {
-  opacity: 1;
-  transform: translateX(0) translateY(0);
+.about .about-content {
+  position: relative;
+  z-index: 2;
+  max-width: 60rem;
+  /* Estado inicial */
+  opacity: 0;
+  transform: translateY(3rem);
+  /* delay 0.2s → el texto aparece DESPUÉS del número */
+  transition: opacity 0.65s ease 0.2s, transform 0.65s ease 0.2s;
 }
-.container-grid .text-container .phrase-container .about-text {
-  color: #ffffff;
+.about .about-tag {
+  display: block;
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.45rem;
+  text-transform: uppercase;
+  color: #00F080;
+  margin-bottom: 2rem;
+}
+.about .about-phrase {
   font-family: "Josefin Sans", sans-serif;
-  font-size: 2.8rem;
+  font-size: clamp(3.2rem, 5.5vw, 7rem);
   font-weight: 300;
-  line-height: 1.4;
-  border-left: 3px solid #00F080;
-  padding-left: 2rem;
+  color: #ffffff;
+  line-height: 1.15;
+  margin: 0;
+}
+.about .about-phrase strong {
+  font-weight: 500;
+  color: #00F080;
+}
+.about .about-photo {
+  position: absolute;
+  right: 20rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(6rem); /* Estado inicial: desplazada */
+  opacity: 0;
+  /* delay 0.4s → la foto es lo último en aparecer */
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s;
+  width: clamp(18rem, 22vw, 26rem);
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(0, 240, 128, 0.15);
+  filter: saturate(0.85);
+  transition: opacity 0.8s ease 0.4s, transform 0.8s ease 0.4s, filter 0.4s ease;
+}
+.about .about-photo:hover {
+  filter: saturate(1);
+}
+.about .about-slide.active .about-bg-number {
+  opacity: 1;
+  transform: translateY(-50%);
+  -webkit-text-stroke: 1px rgba(0, 240, 128, 0.13);
+}
+.about .about-slide.active .about-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about .about-slide.active .about-photo {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+@media (max-width: 768px) {
+  .about .about-slide {
+    padding: 8rem 5rem 6rem;
+    min-height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .about .about-photo {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: translateY(2rem); /* Estado inicial en tablet */
+    opacity: 0;
+    margin-top: 4rem;
+    width: 100%;
+    max-width: 32rem;
+    aspect-ratio: 16/9;
+  }
+  .about .about-slide.active .about-photo {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .about .about-content {
+    max-width: 100%;
+  }
+  .about .about-progress-line {
+    display: none;
+  }
 }
 @media (max-width: 600px) {
-  .container-grid {
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-    min-height: unset; /*no sticky */
+  .about .about-slide {
+    padding: 7rem 2.4rem 5rem;
   }
-  .container-grid .photo-container {
-    position: unset;
-    top: unset;
-    margin-top: 25rem;
+  .about .first {
+    padding-top: 25rem;
   }
-  .container-grid .text-container .first-phrase {
-    margin-top: 0;
-  }
-  .container-grid .text-container .phrase-container {
-    margin-bottom: 4rem;
-    padding-left: 0;
-    opacity: 1 !important;
-    transform: none !important;
+  .about .about-bg-number {
+    font-size: clamp(12rem, 40vw, 18rem);
+    right: -1rem;
   }
 }
 

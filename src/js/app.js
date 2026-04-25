@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('a, i, .hamburger');
 
     // textBlocks where we want the "Magnifier" effect
-    const textBlocks = document.querySelectorAll('.text-container', 'logo');
+    const textBlocks = document.querySelectorAll('.text-container, .about-tag, .about-phrase, .section-title, .section-subtitle, .project-topic, .project-name, .timeline-card, .contact-subtitle, .open-to-work-track');
 
 
     //LINK EFFECT: Hide sphere when entering, show when leaving
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     new Typed('#texto-cambiante', {
-        strings: ['CARLOS', 'SPORTMAN', 'TRAVELER', 'COMPUTER SCIENTIST'],
+        strings: ['CARLOS', 'A SPORTMAN', 'A TRAVELER', 'A COMPUTER SCIENTIST'],
         typeSpeed: 100,
         backSpeed: 70,
         backDelay: 2500,
@@ -98,15 +98,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fixed navegation
     const nav = document.querySelector('.nav');
-    const foto = document.querySelector('.photo');
+    const about = document.querySelector('.about');
 
     document.addEventListener('scroll', function () {
-        console.log(foto.getBoundingClientRect().top)
-        if (foto.getBoundingClientRect().top < 500) {
+        console.log(about.getBoundingClientRect().top)
+        if (about.getBoundingClientRect().top < 200) {
             nav.classList.add('fixed');
         } else {
             nav.classList.remove('fixed');
         }
     });
+
+    /* ── About Section: Reveal ── */
+    const aboutSlides = document.querySelectorAll('.about-slide');
+
+    if (aboutSlides.length > 0) {
+ 
+        const aboutObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+    
+                        // Actualizar tick activo en la barra lateral
+                        const index = parseInt(entry.target.dataset.aboutIndex);                    }
+                });
+            },
+            {
+                threshold: 0.3   // Se activa cuando el 30% del slide es visible
+            }
+        );
+    
+        aboutSlides.forEach(slide => aboutObserver.observe(slide));
+    
+    }
+
+
 
 });
