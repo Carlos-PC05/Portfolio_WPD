@@ -132,7 +132,5 @@ document.addEventListener('DOMContentLoaded', () => {
         aboutSlides.forEach(slide => aboutObserver.observe(slide));
     
     }
-
-
-
+    
 });
