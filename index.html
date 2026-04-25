@@ -99,25 +99,73 @@
 
     <!-- About me section -->
 
-    <section class="container-grid" id="about">
-        <div class="photo-container">
-            <h1 class="about-me">About me</h1>
-            <img src="src/img/portafolio.jpg" alt="Image of myself" class="photo">
+    <section class="about" id="about">
+    
+        <div class="about-slide first" data-about-index="0">
+            <span class="about-bg-number" aria-hidden="true">01</span>
+            <div class="about-content">
+                <span class="about-tag">About me</span>
+                <h2 class="about-phrase">
+                    Hello! I'm a<br>
+                    <strong>Computer Science</strong><br>
+                    student in Spain
+                </h2>
+            </div>
+            <!-- Image on mine -->
+            <img src="src/img/portafolio.jpg" alt="Foto of mine" class="about-photo">
         </div>
-        <div class="text-container">
-            <div class="phrase-container first-phrase">
-                <h2 class="about-text">Hello! I'm a Computer Science student based on Spain</h2>
+    
+        <div class="about-slide" data-about-index="1">
+            <span class="about-bg-number" aria-hidden="true">02</span>
+            <div class="about-content">
+                <span class="about-tag">Passion</span>
+                <h2 class="about-phrase">
+                    I love playing<br>
+                    <strong>any kind of sport</strong>
+                </h2>
             </div>
-            <div class="phrase-container">
-                <h2 class="about-text">Besides Tech, I love playing any kind of sport</h2>
-            </div>
-            <div class="phrase-container">
-                <h2 class="about-text">I also love good coffe</h2>
-            </div>
-            <div class="phrase-container">
-                <h2 class="about-text">With music everywhere!</h2>
-            </div>
+            <!-- Sport IMG -->
+            <img
+                class="about-photo"
+                src="src/img/padel.jpg"
+                alt="Playing sport"
+            >
         </div>
+    
+        <div class="about-slide" data-about-index="2">
+            <span class="about-bg-number" aria-hidden="true">03</span>
+            <div class="about-content">
+                <span class="about-tag">Daily ritual</span>
+                <h2 class="about-phrase">
+                    I also love<br>
+                    <strong>good coffee</strong>
+                </h2>
+            </div>
+            <!-- Coffe IMG -->
+            <img
+                class="about-photo"
+                src="src/img/coffe.jpg"
+                alt="Enjoying coffee"
+            >
+        </div>
+    
+        <div class="about-slide" data-about-index="3">
+            <span class="about-bg-number" aria-hidden="true">04</span>
+            <div class="about-content">
+                <span class="about-tag">Always</span>
+                <h2 class="about-phrase">
+                    With music<br>
+                    <strong>everywhere</strong>
+                </h2>
+            </div>
+            <!-- Music IMG -->
+            <img
+                class="about-photo"
+                src="src/img/concert.jpg"
+                alt="Listening to music"
+            >
+        </div>
+    
     </section>
 
     <!-- Projects section -->
@@ -127,6 +175,7 @@
         <h3 class="section-subtitle">Those are some of the projects I've built in my career as a Computer Scientist</h3>
 
         <div class="container-grid">
+            <!-- Start Project -->
             <div class="project-container">
                 <div class="name-container">
                     <h3 class="project-topic">01 - Web application</h3>
@@ -149,6 +198,7 @@
                     <div class="language">JavaScript</div>
                 </div>
             </div>
+            <!-- End project -->
 
             <div class="project-container">
                 <div class="name-container">
@@ -225,7 +275,6 @@
 
         <div class="timeline">
 
-            <!-- LEFT: el recuadro va a la izquierda -->
             <div class="timeline-item left">
                 <div class="timeline-card">
                     <h2 class="timeline-role">Programming Teacher</h2>
@@ -238,7 +287,6 @@
                 <div class="timeline-node"></div>
             </div>
 
-            <!-- RIGHT: el recuadro va a la derecha -->
             <div class="timeline-item right">
                 <div class="timeline-node"></div>
                 <div class="timeline-card">
@@ -253,7 +301,6 @@
                 </div>
             </div>
 
-            <!-- LEFT -->
             <div class="timeline-item left">
                 <div class="timeline-card">
                     <h2 class="timeline-role">Robotics and Programming Teacher</h2>
